@@ -4,7 +4,7 @@ first: https://drive.google.com/file/d/1pickWYZIv2fbYx-s95IEa-F7LwU8e54K/view?us
 
 main: https://drive.google.com/file/d/1qeezZaf9G9LmdPkO2wgbT5Y2MMdNe1K6/view?usp=sharing
 
-# Занятие 1.
+# Занятие 1. 
 ## Введение в курс. Настройка рабочей среды. Домашнее задания.
 
 *Все пункты задания обязательные для выполнения, т.к. настройка рабочей среды необходима для выполнения всех домашних заданий
