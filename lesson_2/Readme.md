@@ -29,3 +29,5 @@
 ### Задания уровня ultra-pro:
 1.	Выполнить задание уровня pro
 2.	Написать программу “Угадай число”. Программа должна с помощью наводящих вопросов отгадать число. 
+
+Разбор: https://drive.google.com/file/d/1hVX5W7wtwJYwdFrHNNVYvQYkyGG20_tn/view?usp=sharing
