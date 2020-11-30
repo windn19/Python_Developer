@@ -1,10 +1,10 @@
-import universal
-from universal import a
-from universal import bernully as b
+import lesson_5.universal  # импортирование всего модуля
+from lesson_5.universal import a  # импортирование из модуля конкретной функции
+from lesson_5.universal import bernully as b  # импортирование из модуля конкретной функции с присвоением пссевдонима
 
 
-print(universal.p(4))
-print(a(4, 3))
-print(b(20, 20, 0.5))
+print(lesson_5.universal.p(4))  # использование функции при полном импортировании модуля
+print(a(4, 3))  # использование конкретной функции из модуля
+print(b(20, 20, 0.5))  # использование  функции с псевдонимом
 
 
