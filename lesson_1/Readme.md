@@ -1,9 +1,5 @@
 Ссылки на видео с разбором домашних заданий:
 
-first: https://drive.google.com/file/d/1pickWYZIv2fbYx-s95IEa-F7LwU8e54K/view?usp=sharing
-
-main: https://drive.google.com/file/d/1qeezZaf9G9LmdPkO2wgbT5Y2MMdNe1K6/view?usp=sharing
-
 # Занятие 1. 
 ## Введение в курс. Настройка рабочей среды. Домашнее задания.
 
@@ -21,14 +17,21 @@ main: https://drive.google.com/file/d/1qeezZaf9G9LmdPkO2wgbT5Y2MMdNe1K6/view?usp
 3.  Реализовать простейшее приложение в проекте;
 4. Загрузить приложение на GitHub и прислать ссылку в качестве ответа на дз.
 
+https://drive.google.com/file/d/1pickWYZIv2fbYx-s95IEa-F7LwU8e54K/view?usp=sharing
+
 ### Задания уровня Pro:
 1. Создать репозиторий на GitHub;
 2. Создать в PyCharm проект, клонированный из репозитория на GitHub;
 3. Реализовать приложение которое выводит на экран курс валюты (любая на выбор);
 4. Загрузить приложение на GitHub и прислать ссылку в качестве ответа на дз.
 
+https://drive.google.com/file/d/1qeezZaf9G9LmdPkO2wgbT5Y2MMdNe1K6/view?usp=sharing
+
+
 ### Задания уровня Ultra-Pro:
 1. Создать репозиторий на GitHub;
 2. Создать в PyCharm проект, клонированный из репозитория на GitHub;
 3. Реализовать приложение (можно взять из задания уровня Pro)
 4. Загрузить приложение на GitHub и прислать ссылку в качестве ответа на дз.
+
+https://drive.google.com/file/d/1qeezZaf9G9LmdPkO2wgbT5Y2MMdNe1K6/view?usp=sharing
