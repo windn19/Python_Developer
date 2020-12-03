@@ -12,7 +12,7 @@
 4. Создать репозиторий на GitHub;
 
 https://drive.google.com/file/d/1yIGxHhe0ZK0HdJZmbEIpoSF80udbIXoo/view?usp=sharing
-
+ 
 ### Задания уровня Light:
 1. Создать репозиторий на GitHub;
 2. Создать в PyCharm проект, клонированный из репозитория на GitHub;
