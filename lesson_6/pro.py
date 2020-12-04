@@ -1,7 +1,7 @@
-from divisor_master import dividers_num, max_divider
+from divisor_master import dividers_num, max_divider  # импорт методов из модуля
 
 
-def test_div_list():
+def test_div_list():  # набор тесто для этих методов
     assert dividers_num(30) == []
 
 

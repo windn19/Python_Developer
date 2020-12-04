@@ -1,7 +1,7 @@
-from math import pi, sqrt, pow, hypot
+from math import pi, sqrt, pow, hypot  # набор методов для тестирования
 
 
-def test_pi():
+def test_pi():  # набор методов для проверки
     assert pi == 3.14
 
 
