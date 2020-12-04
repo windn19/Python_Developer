@@ -1,6 +1,8 @@
 from divisor_master import is_prime_num, biggest_simple_divider, list_simple_divider
+#  импорт методов из модуля
 
-def test_is_prime_num():
+
+def test_is_prime_num():  # набор тестов для каждого метода.
     assert is_prime_num(97)
 
 
