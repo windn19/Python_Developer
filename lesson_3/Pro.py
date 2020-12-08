@@ -24,3 +24,8 @@ for word, amount in d[:5]:  # перебор первых пяти значен�
     print(word, ' -- ', amount)  # и вывод их на экран
 print(len(d))  # количество пар ключ значение
 print(d1)  # вывод пар нормальных значений
+
+
+#  https://www.w3schools.com/python/python_lambda.asp - по лямбде
+#  https://pythonworld.ru/moduli/modul-collections.html - по defaultdict
+#  https://py-my.ru/post/50b4448ebbddbd5c63000000/index.html - по defaultdict
