@@ -27,4 +27,4 @@ print(len(d))  # количество пар ключ значение
 #  https://www.w3schools.com/python/python_lambda.asp - по лямбде
 #  https://pythonworld.ru/moduli/modul-collections.html - по defaultdict
 #  https://py-my.ru/post/50b4448ebbddbd5c63000000/index.html - по defaultdict
-#  TODO  хватит двух? или лучше переписать без них совсем?
+#   хватит двух? или лучше переписать без них совсем?
