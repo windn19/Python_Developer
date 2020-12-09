@@ -7,7 +7,7 @@
 3.	Отсортировать методы по частоте использования (по вашему мнению)
 4.	Прокомментировать свой выбор
 
-https://drive.google.com/file/d/1BW0EqJODBER1XiyL6qFmJTLWpATWBjCv/view?usp=sharing
+Разбор: https://drive.google.com/file/d/1BW0EqJODBER1XiyL6qFmJTLWpATWBjCv/view?usp=sharing
 
 ## Задания уровня light:
 https://drive.google.com/open?id=15fBsTB1ZU_BzEw5SJmlOMX2uuyi1xN1-
@@ -18,13 +18,13 @@ https://drive.google.com/open?id=15fBsTB1ZU_BzEw5SJmlOMX2uuyi1xN1-
 4.	получить из list пункта 3 dict, ключами которого являются слова, а значениями их количество появлений в тексте;
 5.	вывести 5 наиболее часто встречающихся слов (sort), вывести количество разных слов в тексте (set).
 
-https://drive.google.com/file/d/15194I9Vn16E7xO_jdlTSSUVx05-ZaS7Z/view?usp=sharing
+Разбор: https://drive.google.com/file/d/15194I9Vn16E7xO_jdlTSSUVx05-ZaS7Z/view?usp=sharing
 
 ## Задания уровня pro:
 1-5. выполнить задание уровня light
 6.	в пункте 3 дополнительно к приведению к нижнему регистру выполнить лемматизацию. https://pymorphy2.readthedocs.io/en/0.2/user/index.html
 
-https://drive.google.com/file/d/1Bc9Y-Dx3l1BuSiyH-u51zmn3dfMD4xss/view?usp=sharing
+Разбор: https://drive.google.com/file/d/1Bc9Y-Dx3l1BuSiyH-u51zmn3dfMD4xss/view?usp=sharing
 
 ## Задания уровня ultra-pro:
 1.	выполнить задание уровня pro
@@ -37,4 +37,4 @@ https://drive.google.com/file/d/1Bc9Y-Dx3l1BuSiyH-u51zmn3dfMD4xss/view?usp=shari
 - количество ошибок
 - процент правильных ответов
 
-https://drive.google.com/file/d/17OsJoK8DZTY9JyFPJn9TmzLdUhrq-5jm/view?usp=sharing
+Разбор: https://drive.google.com/file/d/17OsJoK8DZTY9JyFPJn9TmzLdUhrq-5jm/view?usp=sharing
