@@ -1,5 +1,6 @@
-import pickle
-from os.path import exists
+import pickle  # импорт библиотеки для сохранения объектов
+from os.path import exists  # импорт метода для определения наличия файла
+
 
 def menu(num):
     """
@@ -11,7 +12,8 @@ def menu(num):
     print('1. Пополнить счет')
     print('2. Совершить покупку')
     print('3. История покупок')
-    print('4. Выход')
+    print('4. Сбросить значения')
+    print('5. Выход')
     ans = input('Введите номер пункта: ')  # ввод пункт меню пользователем
     return ans
 
@@ -30,42 +32,48 @@ def add(num, hist):
     if sale > num:  # если сумма покупки больше, чем сумма наличных денег
         print('Сумма покупки больше наличных денег')
     else:  # иначе
-        name = input('Введите название покупки: ') # ввод название покупки
+        name = input('Введите название покупки: ')  # ввод название покупки
         hist.append((name, sale))  # добавление названия и суммы покупки в архив истории
         num -= sale  # вычитание суммы покупки из наличных денег
-    save_sum((num, history))
+    save_sum((num, history))  # сохранение обновленной суммы и истории покупок
     return num, hist
 
 
 def save_sum(data):
-    with open('exp.pickle', mode='wb') as f:
-        pickle.dump(data, f)
+    """
+    Сохранение данных в файле
+    data: данные для сохранения
+    """
+    with open('exp.pickle', mode='wb') as f:  # открытие файла для байтовой записи
+        pickle.dump(data, f)  # запись данных в файл
 
 
-# with open('exp.pickle', mode='wb') as f:
-#     pickle.dump((car_data, num), f)
-if exists('exp.pickle'):
-    with open('exp.pickle', mode='rb') as f:
-        num, history = pickle.load(f)
-else:
+if exists('exp.pickle'):  # если файл существует в текущем катологе
+    with open('exp.pickle', mode='rb') as f:  # то открыть его для байтого чтения
+        num, history = pickle.load(f)  # чтение данных из файла и запись в переменные
+else:  # иначе
     num = 0
-    history = [] # объявление глобальных переменных
+    history = []  # объявление глобальных переменных
 
 while True:  # вечный цикл
     ans = menu(num)  # получение ответа пользователя
-    while ans not in ['1', '2', '3', '4']:  # пока ответ не в списке
+    while ans not in ['1', '2', '3', '4', '5']:  # пока ответ не в списке
         ans = menu(num)  # получение ответа пользователя
     if ans == '1':  # если выбран ответ 1
         amount = input('Введите сумму: ')  # ввод добавляемой суммы наличных денег
-        while not amount.replace('.', '', 1).isdigit():   # пока ввод пользователя с убиранием точек не цифры
+        while not amount.replace('.', '', 1).isdigit():  # пока ввод пользователя с убиранием точек не цифры
             amount = input('Введите сумму: ')  # повторить ввод суммы
         num += float(amount)  # добавить сумму к общей сумме наличных денег
-        save_sum((num, history))
+        save_sum((num, history))  # сохранение обновленной суммы и истории покупок
     elif ans == '2':  # если ответ 2
-       num, history = add(num, history)  # запустить функцию добавления продуктов
+        num, history = add(num, history)  # запустить функцию добавления продуктов
     elif ans == '3':  # если ответ 3
         for name, sale in history:  # перебрать все элементы списка истории
             print(f'Было куплено {name} за {sale} руб.')  # и вывести его
+    elif ans == '4':  # если ответ 4
+        num = 0
+        history = []  # обнуление значений переменных
+        save_sum((num, history))  # и сохранение в файле
     else:  # иначе
         break  # выйти из основного цикла
     print()
