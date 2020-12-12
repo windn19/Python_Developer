@@ -33,7 +33,6 @@ https://drive.google.com/file/d/1qeezZaf9G9LmdPkO2wgbT5Y2MMdNe1K6/view?usp=shari
 ### Задания уровня Ultra-Pro:
 1. Создать репозиторий на GitHub;
 2. Создать в PyCharm проект, клонированный из репозитория на GitHub;
-3. Реализовать приложение (можно взять из задания уровня Pro)
+3. Реализовать любое приложение
 4. Загрузить приложение на GitHub и прислать ссылку в качестве ответа на дз.
 
-https://drive.google.com/file/d/1qeezZaf9G9LmdPkO2wgbT5Y2MMdNe1K6/view?usp=sharing
