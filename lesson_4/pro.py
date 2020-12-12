@@ -12,3 +12,4 @@ with open('log', mode='r', encoding='utf-8') as file:  # открыть файл
         if date > last_date:  # если дата больше, чем последняя дата
             last_date = date  # приравнять последнюю дату текущей.
 print(last_date)  # вывести последнюю дату.
+
