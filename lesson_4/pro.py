@@ -1,6 +1,6 @@
 from datetime import datetime  # подключение библиотеки для обработки даты-времени
 
-with open('log1', mode='r', encoding='utf-8') as file:  # открыть файл в режиме чтения и в кодировке utf-8
+with open('log', mode='r', encoding='utf-8') as file:  # открыть файл в режиме чтения и в кодировке utf-8
     last_date = 0  # объявление переменной для последней даты
     for line in file:  # перебрать файл построчно
         if not last_date:  # если последняя дата не равна нулю
