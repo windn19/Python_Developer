@@ -19,7 +19,7 @@
 1.	Выполнить задание уровня light
 2.	В файле с логами https://drive.google.com/open?id=1pKGu-u2Vvtx4xK8i2ZhOzE5rBXyO4qd8 найти дату самого позднего лога (по метке времени):  
 
-Разбор: 
+Разбор: https://drive.google.com/file/d/1Lf5DgOzwdMYeEUZ0Gk41WjO5LleGAyK-/view?usp=sharing
 
 ## Задания уровня ultra-pro:
 1.	выполнить задание уровня pro
