@@ -7,6 +7,7 @@
 3.	Написать в новой ветке различные способы импорта модулей и импорта функций
 4.	Сделать commit, push, pull-request
 
+Разбор: https://drive.google.com/file/d/1gJiNJWQoJ7z25nyWFDGLqLbM_oIv8APa/view?usp=sharing
 
 ## Задания уровня light:
 Необходимо реализовать модуль divisor_master. Все функции модуля принимают на вход натуральные числа от 1 до 1000. Модуль содержит функции:
@@ -14,13 +15,19 @@
 2.	выводит список всех делителей числа;
 3.	выводит самый большой простой делитель числа.
 
+Разбор: https://drive.google.com/file/d/15zZtePFNIzh9gSD4MC5gj3mZNsLl7JjK/view?usp=sharing
+
 ## Задания уровня pro:
 1.	Выполнить задание уровня light
 2.	функция выводит каноническое разложение числа на простые множители https://zaochnik.com/spravochnik/matematika/delimost/razlozhenie-chisel-na-prostye-mnozhiteli/
 3.	функция выводит самый большой делитель (не обязательно простой) числа. 
 
+Разбор: https://drive.google.com/file/d/1utNcBJt64gSm_z1ac6YCEQnI9tGZtYMG/view?usp=sharing
+
 ## Задания уровня ultra-pro:
 1.	выполнить задание уровня pro
 2.	Создать новый проект, в новый проект импортировать в виде модулей программу “Угадай число”, программу "Викторина" и программу "Личный счет" (из прошлых домашних работ). Добавить меню для выбора модуля.
 3.	Расширить функционал модулей
+
+Разбор: https://drive.google.com/file/d/16mmziX_cNes1CIYKOug3h3TGCwyPV0lF/view?usp=sharing
 
