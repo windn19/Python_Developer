@@ -7,11 +7,16 @@ import time  # импорт метода для работы со времене
 
 
 def time_func(func):
+    """
+       декоратор для определения времени выполнения функции
+       f - функция для проверки
+    """
     def wrapper(*args, **kwargs):
-        start_time = time.time()
-        result = func(*args, **kwargs)
-        end_time = time.time()
+        start_time = time.time()  # получение начального отрезка времени
+        result = func(*args, **kwargs)  # выполнение функции с аргументами
+        end_time = time.time()  # получение конечного отрезка времени
         print(f'Время исполнения функции {func.__name__}: {end_time-start_time} сек.')
+        # вывод времени выполнения функции
         return result
     return wrapper
 
@@ -56,7 +61,7 @@ def generate_report(result, outfile):
     from_template(result, template, signature, outfile)  # вызов метода для генератора документа
 
 
-@time_func
+@time_func  # вызов декоратора для замера времени выполнения функции
 def create_csv(data, file):
     """
     Создание csv файла
@@ -69,7 +74,7 @@ def create_csv(data, file):
     # вывод времени работы метода в миллисекундах
 
 
-@time_func
+@time_func  # вызов декоратора для замера времени выполнения функции
 def create_json(csv_file, json_file):
     """
     создание json файла из cvs файла
@@ -84,7 +89,7 @@ def create_json(csv_file, json_file):
         json.dump(data, f)  # загрузка данных в открытый файл
 
 
-@time_func
+@time_func  # вызов декоратора для замера времени выполнения функции
 def gen_report(file, outfile):
     with open(file, mode='r') as f:
         data = json.load(f)
