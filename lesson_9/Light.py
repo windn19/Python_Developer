@@ -1,4 +1,4 @@
-from random import randint, choice
+from random import choice
 
 
 def amount_task(desk):
@@ -91,10 +91,10 @@ class Player:
 class Desk:
 
     def __init__(self):
-        self.desk = {'П': ['6', '7', '8'], #'9', '10', 'В', 'Д', 'К', 'Т'],
-                     'К': ['6', '7', '8'], #'9', '10', 'В', 'Д', 'К', 'Т'],
-                     'Б': ['6', '7', '8'], #'9', '10', 'В', 'Д', 'К', 'Т'],
-                     'Ч': ['6', '7', '8']} # '9', '10', 'В', 'Д', 'К', 'Т']}
+        self.desk = {'П': ['6', '7', '8', '9', '10', 'В', 'Д', 'К', 'Т'],
+                     'К': ['6', '7', '8', '9', '10', 'В', 'Д', 'К', 'Т'],
+                     'Б': ['6', '7', '8', '9', '10', 'В', 'Д', 'К', 'Т'],
+                     'Ч': ['6', '7', '8', '9', '10', 'В', 'Д', 'К', 'Т']}
 
     @property
     def is_empty(self):
@@ -172,51 +172,6 @@ class Full:
                         i.desk[j].extend(add_cart[j])
                 print(i, i.amount_cart())
 
-
-
-    def run(self):
-        desk = Desk()
-        for i in self.players:
-            i.desk = desk.issue_cards(6)
-        # for i in self.players:
-        #     print(i, i.amount_cart())
-        n = 0
-        while not self.game_over(desk):
-            if not self.defender:
-                self.attack = [i for i in self.players if i.number != (n+1) % len(self.players)]
-                self.defender = self.players[(n+1) % len(self.players)]
-            num = 0
-            while num < 6:
-                for attack in self.attack:
-                    while True:
-                        print(attack)
-                        cart = attack.go(self.task)
-                        if cart:
-                            self.task[cart[-1]].append(cart[:-1])
-                            print(self.task)
-                            print()
-                            print(self.defender)
-                            cart = self.defender.go(self.task, defend=cart)
-                        if isinstance(cart, str):
-                            self.task[cart[-1]].append(cart[:-1])
-                        else:
-                            break
-                        num += 1
-                num = 6
-            else:
-                self.task = {'П': [], 'К': [], 'Б': [], 'Ч': []}
-            print(self.task)
-            print()
-            # else:
-            #         self.task = {'П': [], 'К': [], 'Б': [], 'Ч': []}
-            #         break
-            for i in self.players:
-                print(i, i.amount_cart())
-                if i.amount_cart() < 6:
-                    add_cart = desk.issue_cards(6-i.amount_cart())
-                    for j in add_cart:
-                        i.desk[j].extend(add_cart[j])
-                print(i, i.amount_cart())
 
 
 first = Full(2)
