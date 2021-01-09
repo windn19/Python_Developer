@@ -276,5 +276,6 @@ class Full:
                         i.desk[j].extend(add_cart[j])
 
 
-first = Full(2)  # активация объекта игры
-first.run2()  # запуск игры
+if __name__ == '__main__':
+    first = Full(2)  # активация объекта игры
+    first.run2()  # запуск игры
