@@ -33,7 +33,7 @@ class Desk:
         n  - количество необходимых карт
         return - словарь с выданными картами
         """
-        result = {'П': [], 'К': [], 'Б': [], 'Ч': []}  # объявление словаря с результатом
+        result = CurrDesk()  # объявление словаря с результатом
         # формирование списка мастей, в которых остались карты
         suit_list = [i for i in self.desk.keys() if self.desk[i]]
         if suit_list and self.flag:  # если этот список не пустой, и флаг признака окончание колоды не поднят
@@ -46,13 +46,13 @@ class Desk:
                     value = choice(self.desk[suit])
                     if value:
                         # удаление выбранной карты из колоды
-                        self.desk[suit].remove(value)
-                    result[suit].append(value)  # добавление карты в итоговый словарь
+                        self.desk = self.desk - (value + suit)
+                    result = result + (value + suit)  # добавление карты в итоговый словарь
                 else:  # иначе
                     # получение масти козыря
                     suit = [x for x in self.kosyr.keys() if self.kosyr[x]]
                     value = self.kosyr[suit][0]  # получение значения козыря
-                    result[suit].append(value)  # добавление карты в итоговый словарь
+                    result = result + (value + suit)  # добавление карты в итоговый словарь
                     self.flag = False  # поднятие флага окончания колоды
                     break  # прерывание цикла
         elif self.flag and self.kosyr:  # иначе если флаг не поднят и есть значение козыря
@@ -72,9 +72,12 @@ class Desk:
         return s
 
     def __add__(self, other):
-        for i in self.desk.keys():
-            if len(other.desk[i]):
-                self.desk[i].extend(other.desk[i])
+        if not isinstance(other, str):
+            for i in self.desk.keys():
+                if len(other.desk[i]):
+                    self.desk[i].extend(other.desk[i])
+        else:
+            self.desk[other[-1]].append(other[:-1])
         return self
 
     def __sub__(self, other):
@@ -127,7 +130,7 @@ def cart_in_desk(desk, cart, kosyr):
     return - возврат истина или ложь
     """
     # условие, что карта находится в колоде и значение тоже находится в этой колоде
-    if1 = cart[-1] in desk and cart[:-1] in desk[cart[-1]]
+    if1 = cart in desk
     if2 = cart[-1] in kosyr  # условие, что масть карты соответствует козырю
     return if1 or if2
 
@@ -171,7 +174,7 @@ class Player:
         инициация класса
         """
         self.number = num  # присвоение номера конкретному игроку
-        self.desk = {'П': [], 'К': [], 'Б': [], 'Ч': []}  # объявление значений карт на руках
+        self.desk = CurrDesk()  # объявление значений карт на руках
 
     def is_my_cart(self, cart):
         """
@@ -204,63 +207,6 @@ class Player:
         return sum(len(self.desk[x]) for x in self.desk.keys()) != 0
 
 
-class Desk:
-    """
-    Класс колоды
-    """
-
-    def __init__(self):
-        """
-        инициализация класса
-        """
-        self.desk = {'П': ['6', '7', '8', '9', '10', 'В', 'Д', 'К', 'Т'],  # начальная колода
-                     'К': ['6', '7', '8', '9', '10', 'В', 'Д', 'К', 'Т'],
-                     'Б': ['6', '7', '8', '9', '10', 'В', 'Д', 'К', 'Т'],
-                     'Ч': ['6', '7', '8', '9', '10', 'В', 'Д', 'К', 'Т']}
-        self.kosyr = None  # объявление козыря
-        self.flag = True  # и признака, что запас карт закончен
-
-    @property
-    def is_empty(self):
-        """
-        свойство, что колода пуста
-        """
-        return sum(len(x) for x in self.desk.values()) == 0
-
-    def issue_cards(self, n):
-        """
-        раздача карт
-        n  - количество необходимых карт
-        return - словарь с выданными картами
-        """
-        result = {'П': [], 'К': [], 'Б': [], 'Ч': []}  # объявление словаря с результатом
-        # формирование списка мастей, в которых остались карты
-        suit_list = [i for i in self.desk.keys() if self.desk[i]]
-        if suit_list and self.flag:  # если этот список не пустой, и флаг признака окончание колоды не поднят
-            for _ in range(n):  # повторяя действия для каждой нужно карты
-                # формирование списка мастей, в которых остались карты
-                suit_list = [i for i in self.desk.keys() if self.desk[i]]
-                if suit_list:  # если список не пустой
-                    suit = choice(suit_list)  # выбираем случайную масть
-                    # выбираем случайную карту из оставшихся в этой колоде карт
-                    value = choice(self.desk[suit])
-                    if value:
-                        # удаление выбранной карты из колоды
-                        self.desk[suit].remove(value)
-                    result[suit].append(value)  # добавление карты в итоговый словарь
-                else:  # иначе
-                    # получение масти козыря
-                    suit = [x for x in self.kosyr.keys() if self.kosyr[x]]
-                    value = self.kosyr[suit][0]  # получение значения козыря
-                    result[suit].append(value)  # добавление карты в итоговый словарь
-                    self.flag = False  # поднятие флага окончания колоды
-                    break  # прерывание цикла
-        elif self.flag and self.kosyr:  # иначе если флаг не поднят и есть значение козыря
-            result = self.kosyr  # приравнивание итогового словаря к словарю козыря
-            self.flag = False  # поднятие флага окончания колоды
-        return result
-
-
 class Full:
     """
     класс игры
@@ -273,7 +219,7 @@ class Full:
         """
         # объявление игроков: по умолчанию 0 - компьютер, а остальные люди
         self.players = [CompPlayer(0), *[HumanPlayer(_) for _ in range(1, num + 1)]]
-        self.task = {'П': [], 'К': [], 'Б': [], 'Ч': []}  # объявление кона
+        self.task = CurrDesk()  # объявление кона
         self.defender = None  # объявление переменной для защищающегося
         self.attack = None  # объявление списка нападающих
 
@@ -305,18 +251,18 @@ class Full:
                 break  # прерывание цикла
         return f'Козырь: {value}{suit}'
 
-    def pr_task(self, task):
-        """
-        вывод карт на руках играка
-        task - колода, которую нужно вывести
-        return: строка с названиями карт, которые есть в наличии
-        """
-        s = ''  # объявление результирующей переменной
-        for i in task.keys():  # для каждого из ключей колоды
-            if task[i]:  # если значение по этому ключу не пустое
-                for j in task[i]:  # для каждого из значений списка по ключу
-                    s += ''.join([j, i, ' '])  # добавление к итоговой строке новых значений масти и карты
-        return s
+    # def pr_task(self, task):
+    #     """
+    #     вывод карт на руках играка
+    #     task - колода, которую нужно вывести
+    #     return: строка с названиями карт, которые есть в наличии
+    #     """
+    #     s = ''  # объявление результирующей переменной
+    #     for i in task.keys():  # для каждого из ключей колоды
+    #         if task[i]:  # если значение по этому ключу не пустое
+    #             for j in task[i]:  # для каждого из значений списка по ключу
+    #                 s += ''.join([j, i, ' '])  # добавление к итоговой строке новых значений масти и карты
+    #     return s
 
     def run2(self):
         """
@@ -338,9 +284,9 @@ class Full:
             print('Защитник: ', self.defender.name, self.defender.number)
             num = 0  #  номер розыгрыша
             while num <= 6:  # пока номер меньше или равно 6
-                if amount_task(self.task):  # если количество карт в колоде не равно нулю
+                if len(self.task):  # если количество карт в колоде не равно нулю
                     # выводим колоду кона и козырь
-                    print(f'На столе: {self.pr_task(self.task)}  {self.pr_kosyr(desk.kosyr)}')
+                    print(f'На столе: {self.task}  {self.pr_kosyr(desk.kosyr)}')
                 else:
                     # выводим только козырь
                     print(self.pr_kosyr(desk.kosyr))
@@ -349,37 +295,36 @@ class Full:
                 if not self.attack.is_alive():  # если атакующий не активен
                     break  # прерывание списка
                 if cart:  # если карта - не пустое значение
-                    self.task[cart[-1]].append(cart[:-1])  # добавляем ее в колоду кона
+                    self.task = self.task + cart  # добавляем ее в колоду кона
                     print()
-                    print(f'На столе: {self.pr_task(self.task)} ход: {cart} {self.pr_kosyr(desk.kosyr)}')
+                    print(f'На столе: {self.task} ход: {cart} {self.pr_kosyr(desk.kosyr)}')
                     print()
                     print(self.defender)  # выводим карты защищающегося
                     cart = self.defender.go(self.task, desk.kosyr, defend=cart)  # ход защищающегося
                     if not self.defender.is_alive():  # если он не активен
                         break  # прерывание цикла
                 if isinstance(cart, str):  # если тип карты строка
-                    self.task[cart[-1]].append(cart[:-1])  # добавляем ее в колоду кона
+                    self.task = self.task + cart  # добавляем ее в колоду кона
                 else:  # иначе
                     if cart:  # если cart == true
                         n += 2  # добавление к n 2
                         self.defender = None  # обнуление защитника
                         num = 6  # выход из цикла
-                        self.task = {'П': [], 'К': [], 'Б': [], 'Ч': []}  # обнуление колоды кона
+                        self.task = CurrDesk()  # обнуление колоды кона
                     else:  # иначе
                         n += 1  # добавление к n 1
                         k += 1  # добавление 1 к игрокам, что сказали бито
                         # если k больше чем количество игроков минус защищающийся
                         if k >= len(self.players) - 1:
                             self.defender = None  # обнуление защитника
-                            self.task = {'П': [], 'К': [], 'Б': [], 'Ч': []}  # обнуление колоды кона
+                            self.task = CurrDesk  # обнуление колоды кона
                             break  # прерывание цикла
             print()
             for i in self.players: # после окончание круга игры для каждого игрока
                 if i.amount_cart() < 6:  # если его количество карт меньше 6
                     # добавление нужного количества карт в колоду игрока
                     add_cart = desk.issue_cards(6 - i.amount_cart())
-                    for j in add_cart:
-                        i.desk[j].extend(add_cart[j])
+                    i.desk = i.desk + add_cart
 
 
 class HumanPlayer(Player):
@@ -410,22 +355,20 @@ class HumanPlayer(Player):
                     cart_in_desk(self.desk, cart, kosyr) and is_my_cart_big(cart, defend, kosyr)):
                 if cart.rstrip() == 'в':  # если ввели "в"
                     # все карты добавляются в колоду игрока
-                    for i in self.desk.keys():
-                        if value_task[i]:
-                            self.desk[i].extend(value_task[i])
+                    self.desk = self.desk + value_task
                     cart = 1
                     break  # прерывание цикла
                 cart = input('Ход def или взять (в): ')
             if cart != 1:  # если карты не взяты, то они добавляются к колоде игрока
-                self.desk[cart[-1]].remove(cart[:-1])
+                self.desk = self.desk - cart
         else:  # иначе
-            if not amount_task(value_task):  # если количество карт в колоде кона не равно нулю
+            if not len(value_task):  # если количество карт в колоде кона не равно нулю
                 cart = input('Ход ')  # ввод карты хода
                 # проверка корректности ввода
                 while 2 < len(cart) > 3 or not (cart_in_desk(self.desk, cart, kosyr)):
                     cart = input('Ход ')
                 # удаление карты из колоды игрока
-                self.desk[cart[-1]].remove(cart[:-1])
+                self.desk = self.desk - cart
             else:  # иначе
                 cart = input('Ход или бито(б): ')  # ввод карты и действия
                 # проверка корректности ввода
@@ -437,7 +380,8 @@ class HumanPlayer(Player):
                         break  # прерывание цикла.
                     cart = input('Ход или бито(б): ')
                 if cart:  # если значение карты не равно лжи
-                    self.desk[cart[-1]].remove(cart[:-1])  # удаляем ее из колоды игрока
+                    self.desk = self.desk - cart
+                    # удаляем ее из колоды игрока
         return cart
 
 
@@ -465,13 +409,15 @@ class CompPlayer(Player):
         if defend:  # если защита
             cart = self.go_deferend(kosyr, value_task, defend)  # вызов метода ход в защите
             if cart != 1:  # если значение карты не равно 1
-                self.desk[cart[-1]].remove(cart[:-1])  # удаляем ее из колоды игрока
+                self.desk = self.desk - cart
+                # удаляем ее из колоды игрока
             else:  # иначе
                 print('ВЗЯЛ')
         else:  # иначе, если атакуем
             cart = self.go_attack(kosyr, value_task)  # вызов метода ход в атаке
             if cart:  # если значение карты не равно 0
-                self.desk[cart[-1]].remove(cart[:-1])  # удаляем ее из колоды игрока
+                self.desk = self.desk - cart
+                # удаляем ее из колоды игрока
             else:
                 print('БИТО')
         return cart
@@ -489,7 +435,7 @@ class CompPlayer(Player):
                 suit_kosyr = i
         # список мастей у колоды, в который еще остались карты и не равных козырю
         suits = [i for i in self.desk.keys() if i != suit_kosyr and len(self.desk[i])]
-        if not amount_task(task):   # если количество карт в колоде кона не равно нулю
+        if not len(task):   # если количество карт в колоде кона не равно нулю
             # результирующая масть либо случайный выбор из списка мастей, если он существует,
             # иначе масть козыря
             r_suit = choice(suits) if suits else suit_kosyr
