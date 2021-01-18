@@ -18,11 +18,11 @@ def test_sqrt1():
 
 
 def test_pow():
-    assert pow(2) == 4
+    assert pow(2, 2) == 4
 
 
 def test_pow1():
-    assert pow(4) == 25
+    assert pow(4, 2) == 25
 
 
 def test_hypot():
