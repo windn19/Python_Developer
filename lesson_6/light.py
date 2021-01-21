@@ -4,7 +4,7 @@ from divisor_master import is_prime_num, biggest_simple_divider, list_simple_div
 
 def test_is_prime_num():  # набор тестов для каждого метода.
     assert is_prime_num(97)
-
+import pytest
 
 def test_is_prime_num1():
     assert is_prime_num('234')
@@ -28,3 +28,7 @@ def test_list_prime():
 
 def test_list_prime1():
     assert list_simple_divider(30) == [2, 3, 5]
+
+
+if __name__=='__main__':
+    pytest.main()
