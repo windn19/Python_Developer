@@ -97,8 +97,8 @@ class CurrDesk(Desk):
     def set_desk(self, task):
         self.desk = task
 
-    def add_cart(self, cart):
-        self.desk[cart[-1]].append(cart[:-1])
+    # def add_cart(self, cart):
+    #     self.desk[cart[-1]].append(cart[:-1])
 
 
 def amount_task(desk):
@@ -485,5 +485,6 @@ class CompPlayer(Player):
         return f'{r_value}{r_suit}' if r_value else r_suit
 
 
-first = Full()  # активация объекта игры
-first.run2()  # запуск игры
+if __name__ == '__main__':
+    first = Full()  # активация объекта игры
+    first.run2()  # запуск игры
